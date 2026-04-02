@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam Cooke Vr Exhibition</title>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+</head>
+</head>
+<body>
+    
+
+<a-scene>
+
+
+<a-plane 
+        src="#plank_diff" 
+        normal-map="#plank_nor" 
+        roughness-map="#plank_rough"
+        ambient-occlusion-map="#plank_ao" 
+        rotation="-90 0 0" 
+        width="20" 
+        height="20" 
+        position="0 0 1.5"
+        repeat="10 10"
+        material="roughness: 1; metalness: 0">
+     
+      </a-plane>
+
+<a-sky color="#D3D3D3"></a-sky>
+    <a-assets > 
+        
+       <img id="plank_diff" src="../assets/textures/plank/plank_flooring_04_diff_1k.png" alt="">
+
+        
+        <a-mixin id="wall" geometry="primative: box; width: 5.7; height:3;"></a-mixin>
+    <a-mixin id="primary" material="color:#fffaed"></a-mixin>
+    
+    
+    
+    </a-assets>
+
+    <a-entity id="main-hall">
+        <a-entity mixin="wall primary " position="-7.45765 1.5 7.251" rotation="0.33 90 0"></a-entity>
+        <a-entity mixin="wall primary" position="7.458 1.5 7.251" rotation="0.33 90 0"></a-entity>
+        
+        <a-entity mixin="wall primary" position="-5.203 1.5 2.14493" rotation="0 45 0"></a-entity>
+        <a-entity mixin="wall primary" position="5.2 1.5 2.14493" rotation="0 -45 0"></a-entity>
+        <a-entity mixin="wall primary" position="0 1.5 0" shadow></a-entity>
+
+    </a-entity>
+
+
+
+</a-entity>
+
+</a-scene>
+
+
+
+
+
+
+
+
+</body>
+</html>
