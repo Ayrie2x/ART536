@@ -6,6 +6,10 @@
     <title>Sam Cooke Vr Exhibition</title>
     <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
 </head>
+
+    <script src="https://unpkg.com/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-blink-controls/dist/aframe-blink-controls.min.js"></script>
+
 </head>
 <body>
     
@@ -15,6 +19,7 @@
         
        <img id="plank_diff" src="../assets/textures/plank/plank_flooring_04_diff_1k.png" alt="">
        <img id="white_diff" src="../assets/textures/brick/white_plaster_02_diff_1k.png" alt="">
+       <img id="rubber_diff" src="../assets/textures/brick/rubber_tiles_diff_1k.png" alt="">
 
     <img id="Wall1n" src="../assets/images/Wall1_SamCn.png">
     <img id="Wall2" src="../assets/images/Wall2_SamC.png">
@@ -26,14 +31,29 @@
         <a-mixin id="wall" geometry="primative: box; width: 5.7; height:3;" shadow></a-mixin>
     <a-mixin id="primary" material="color:#fffaed"></a-mixin>
   
-    <a-asset-item id="SamCookeLogo" src="3dmodels/SamCooke.gltf"></a-asset-item>
+    <a-asset-item id="SamCookeLogo" src="3dmodels/Sam cookegray.gltf"></a-asset-item>
 
 
     <a-asset-item id="SamDate" src="3dmodels/Sam_Date.gltf"></a-asset-item>
 
     <a-asset-item id="SamCookedate" src="3dmodels/SamCookedate.gltf"></a-asset-item>
 
+<img id="Mat" src="../assets/designs/Mat.png" crossorigin="anonymous">
+
+
+<video id="The Soul Stirrers" autoplay loop muted playsinline>
+  <source src="../assets/videos/The Soul Stirrers.mov" type="video/mp4" >
+</video>
+
   </a-assets>
+
+<a-plane src="#The Soul Stirrers" 
+width="3" height="2"
+ position="-5.71088 1.2871 -6.50044" 
+ rotation="0 45.11 0"
+  material="shader: flat"
+   geometry="height: 1.28; width: 1.73">
+</a-plane>
 
 <a-gltf-model src="#SamCookeLogo" position="-6.612 1.899 2.974" scale="0.057 0.048 -0.001" rotation="0.090 90 0" light="intensity: 1; type: ambient; color: #fefcdd; groundColor: #ffffff" width="8" height="1.4113" shadow></a-gltf-model>
 
@@ -42,6 +62,8 @@
 
 
 <a-plane src="#plank_diff" normal-map="#plank_nor" 
+id="floor"
+class="floor"
 roughness-map="#plank_rough" ambient-occlusion-map="#plank_ao" 
 rotation="-90 0 0" 
 width="20" 
@@ -110,6 +132,89 @@ material="ambientOcclusionMap: ; normalMap: ; roughness: 1; roughnessMap: " scal
 <a-entity light="type: point" position="3.20628 2.5768 4.29053"></a-entity>
 <a-entity light="type: point" position="4.47353 2.57567 9.33514"></a-entity>
 <a-entity light="type: point" position="-5.43151 2.9689 12.79632"></a-entity>
+
+<a-plane id="Mat" src="#Mat" material="transparent: true"
+ position="0 0.02772 3.47806" rotation="-90 0 0" width="1.8" height="1"
+  shadow="" scale="1.54 1.67 1.3">
+</a-plane>
+
+
+
+
+
+<a-box id="rubber_diff" 
+src="#rubber_diff"
+position="2.52078 0.1 11.89974"
+ width="6" height="0.2" depth="3" 
+ material="repeat: 2 1; color: #444" 
+ shadow="" scale="0.53 1 1">
+</a-box>
+
+
+
+<a-entity id="mic-stand" position="2.20318 0.2 12.17916" scale="0.5 0.5 0.5">
+  
+  <a-cylinder color="#222" height="0.05" radius="0.3"></a-cylinder>
+  
+  <a-cylinder color="#c7a82e" height="3" radius="0.03" position="0 1.5 0"></a-cylinder>
+  
+  <a-sphere position="0 3.1 0" radius="0.15" scale="0.77 1.16 0.88" material="color: #ccc; metalness: 0.8; roughness: 0.2" geometry="radius: 0.26; thetaLength: 179.96" rotation="-0.51508905782261 0.8090164067247224 -18.1925559109939">
+    <a-ring color="#333" radius-inner="0.15" radius-outer="0.16" rotation="90 0 0"></a-ring>
+  </a-sphere>
+
+</a-entity>
+
+
+<a-entity id="stage-stool" position="3.04056 0.2 12.3177" scale="0.8 0.8 0.8">
+  
+  <a-cylinder position="0 1.2 0" radius="0.25" height="0.1" material="color: #222; roughness: 0.8" scale="1.21 1 1.5">
+  </a-cylinder>
+
+  <a-cylinder position="0 0.6 0" radius="0.03" height="1.2" material="color: #999; metalness: 0.7">
+  </a-cylinder>
+
+  <a-torus position="0 0.3 0" radius="0.15" radius-tubular="0.01" rotation="90 0 0" material="color: #999; metalness: 0.7">
+  </a-torus>
+
+  <a-cylinder position="0 0.02 0" radius="0.2" height="0.04" material="color: #333; metalness: 0.5">
+  </a-cylinder>
+  
+</a-entity>
+  
+<a-entity 
+  light="type: spot; intensity: 1.5; angle: 30; penumbra: 0.5; color: #fffbe0; castShadow: true" 
+  position="0 5 -2" 
+  rotation="-70 0 0">
+</a-entity>
+ 
+
+<a-entity id="stanchion-left" position="0.61171 0.01249 14.0263">
+  <a-cylinder radius="0.05" height="1.1" color="#FFD700" metalness="0.8" position="0 0.56405 -1.49393"></a-cylinder> <a-cylinder radius="0.15" height="0.02" color="#FFD700" position="0 0.01264 -1.51318"></a-cylinder> </a-entity>
+
+<a-entity id="stanchion-right" position="3.2 0.56164 14.27873">
+  <a-cylinder radius="0.05" height="1.1" color="#FFD700" metalness="0.8" position="0.11316 0.06893 -0.04128"></a-cylinder>
+  <a-cylinder radius="0.15" height="0.02" color="#FFD700" position="0.19836 -0.54 -0.12893"></a-cylinder>
+</a-entity>
+
+ <a-torus id="red-rope" arc="100" radius="3.2" radius-tubular="0.03" position="2.02888 2.33638 13.09991" rotation="14.22807 149.02959 -143.26294005230616" color="black" scale="0.65 0.62 0.95">
+</a-torus>
+
+
+
+
+
+
+
+<a-entity id="player" position="0 1.6 0">
+            <!-- camera -->
+            <a-entity id="camera" camera wasd-controls look-controls></a-entity>
+            <!-- hand controls -->
+            <a-entity id="left-hand" raycaster="objects: .floor" oculus-touch-controls="hand: left" blink-controls></a-entity>
+            <a-entity id="right-hand" raycaster="objects: .floor" oculus-touch-controls="hand: right" blink-controls></a-entity>
+        </a-entity>
+
+
+
 
 
 
