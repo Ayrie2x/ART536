@@ -54,6 +54,30 @@
         },
       });
 
+      // Component to autoplay videos in VR
+      AFRAME.registerComponent("video-autoplay", {
+        init: function () {
+          const el = this.el;
+          const video = document.querySelector("#stirrers");
+          
+          if (video) {
+            // Try to play when scene is loaded
+            const playVideo = () => {
+              video.play().catch(err => {
+                console.log("Autoplay blocked, will play on interaction:", err);
+              });
+            };
+            
+            // Wait for scene to load
+            el.addEventListener("loaded", playVideo);
+            
+            // Also try on first click anywhere in scene
+            document.body.addEventListener("click", playVideo, { once: true });
+            document.body.addEventListener("touchstart", playVideo, { once: true });
+          }
+        },
+      });
+
       AFRAME.registerComponent("hover-glow", {
         init: function () {
           const el = this.el;
@@ -167,7 +191,7 @@
   </head>
 
   <body>
-    <a-scene>
+    <a-scene video-autoplay>
       <a-assets>
         <img
           id="plank_diff"
@@ -232,21 +256,34 @@
 
         <video
           id="stirrers"
+          preload="auto"
           autoplay
           loop
           muted
           playsinline
+          webkit-playsinline
+          crossorigin="anonymous"
           src="../assets/videos/TheSoulStirrers.mp4"
         ></video>
       </a-assets>
 
-      <a-video
+      <!-- <a-video
         src="#stirrers"
         position="-5.65086 1.2871 -6.5065"
         geometry="primitive: plane; height: 1.28; width: 1.73"
         rotation="0 45.11 0"
       >
-      </a-video>
+      </a-video> -->
+
+      <a-video 
+        src="#stirrers" 
+        width="1.73" 
+        height="1.28" 
+        rotation="0 45.11 0" 
+        position="-5.65086 1.2871 -6.5065" 
+        loop="true"
+        class="clickable"
+      ></a-video>
 
       <a-box
         position="-5.71088 1.2871 -6.55336"
