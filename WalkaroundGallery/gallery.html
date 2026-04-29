@@ -165,20 +165,6 @@ material="opacity: 0.8; transparent: true" shadow="">
 
 
 
-        <a-entity cursor="fuse: false; rayOrigin: mouse;"
-                  raycaster="objects: .clickable"
-                  position="0 0 -1"
-                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                  material="color: #FFD700; shader: flat">
-        </a-entity>
-
-      <a-entity id="left-hand" raycaster="objects: .floor, .clickable" oculus-touch-controls="hand: left" blink-controls></a-entity>
-      <a-entity id="right-hand" raycaster="objects: .floor, .clickable" oculus-touch-controls="hand: right" blink-controls></a-entity>
-    </a-entity>
-
-
-
-
 
 
     <a-entity id="main-hall" rotation="0 0 0" position="0 0 -10">
@@ -339,6 +325,18 @@ material="opacity: 0.8; transparent: true" shadow="">
       </a-entity>
 
 
+
+
+        <a-entity cursor="fuse: false; rayOrigin: mouse;"
+                  raycaster="objects: .clickable"
+                  position="0 0 -1"
+                  geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+                  material="color: #FFD700; shader: flat">
+        </a-entity>
+
+      <a-entity id="left-hand" raycaster="objects: .floor, .clickable" oculus-touch-controls="hand: left" blink-controls></a-entity>
+      <a-entity id="right-hand" raycaster="objects: .floor, .clickable" oculus-touch-controls="hand: right" blink-controls></a-entity>
+    </a-entity>
 
 
 
